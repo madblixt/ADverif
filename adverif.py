@@ -25,21 +25,6 @@ for dn, entry in result:
         print("Erreur de recherche LDAP : " + str(e))
         continue
 
-    # Check for login attempts from unfamiliar IP addresses
-    if 'dNSHostName' in entry:
-        ip_addresses = entry['dNSHostName']
-        if len(ip_addresses) > 1:
-            # Send an alert to the administrator if the user has logged in from multiple IP addresses
-            try:
-                from_address = 'noreply@example.com'
-                to_address = 'admin@example.com'
-                subject = 'Suspicious login activity'
-                body = 'User ' + entry['cn'][0] + ' has logged in from multiple IP addresses: ' + ', '.join(ip_addresses)
-                message = 'Subject: {}\n\n{}'.format(subject, body)
-                smtp_conn = smtplib.SMTP('smtp.example.com')
-                smtp_conn.sendmail(from_address, to_address, message)
-            except smtplib.SMTPException as e:
-                print("Erreur d'envoi d'e-mail : " + str(e))
 
 # Send an alert to the administrator if the user has had more than 5 failed login attempts
 try:
