@@ -8,4 +8,4 @@ If you want to send email alerts when suspicious activity is detected, you will 
 
 Run the script using a command like python monitor_user_accounts.py. The script will connect to the Active Directory server, search for all users in the domain, and check their login history. If any suspicious activity is detected, the script will send an email alert to the administrator.
 
-You can schedule the script to run regularly (e.g. once a day) using a tool like cron on Unix-like systems or the Task Scheduler on Windows. This will allow the script to mo
+You can schedule the script to run regularly (e.g. once a day) using a tool like cron on Unix-like systems or the Task Scheduler on Windows.
